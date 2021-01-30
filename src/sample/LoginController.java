@@ -60,6 +60,10 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
+    public void validateLogin(){
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         File brandingFile = new File("IMAGES/image1.png");
