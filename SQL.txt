@@ -1,0 +1,14 @@
+CREATE SCHEMA `demo_db` DEFAULT CHARACTER SET utf32 ;
+
+CREATE TABLE `demo_db`.`user_account` (
+  `account_id` INT NOT NULL AUTO_INCREMENT,
+  `firstname` VARCHAR(45) NOT NULL,
+  `lastname` VARCHAR(45) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`account_id`),
+  UNIQUE INDEX `account_id_UNIQUE` (`account_id` ASC) VISIBLE,
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE);
+
+  INSERT INTO `demo_db`.`user_account` (`account_id`, `firstname`, `lastname`, `username`, `password`) VALUES ('1', 'John', 'Wick', 'Kocur', 'heslojeveslo');
+
