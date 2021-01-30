@@ -44,7 +44,8 @@ public class LoginController implements Initializable {
 
         if (!usernameTextField.getText().isBlank() && !enterPasswordTextField.getText().isBlank()) {
                 System.out.println("Wait a moment for login");
-                loginMessageLabel.setText("Wait a moment for login");
+             //   loginMessageLabel.setText("Wait a moment for login");
+            validateLogin();
             }
             else if (!usernameTextField.getText().isBlank() && enterPasswordTextField.getText().isBlank()){
                 System.out.println("Write also a password please");
@@ -67,7 +68,7 @@ public class LoginController implements Initializable {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDb = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_account Where username = " + usernameTextField.getText() + "AND password = " + enterPasswordTextField.getText() + "";
+        String verifyLogin = "SELECT count(1) FROM user_account Where username = '" + usernameTextField.getText() + "'AND password = '" + enterPasswordTextField.getText() + "'";
 
         try {
             Statement statement = connectDb.createStatement();
