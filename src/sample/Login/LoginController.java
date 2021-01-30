@@ -1,5 +1,6 @@
 package sample.Login;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,6 +9,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import sample.Database.DatabaseConnection;
@@ -25,6 +28,9 @@ public class LoginController implements Initializable {
     private Button cancelButton;
 
     @FXML
+    private Button loginButton;
+
+    @FXML
     private Label loginMessageLabel;
 
     @FXML
@@ -38,6 +44,40 @@ public class LoginController implements Initializable {
 
     @FXML
     private PasswordField enterPasswordTextField;
+
+    @FXML
+    public void buttonPressed()
+    {
+        enterPasswordTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER){
+                    System.out.println("ide to");
+                    validateLogin();
+                }
+            }
+        });
+
+        usernameTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER){
+                    System.out.println("ide to");
+                    validateLogin();
+                }
+            }
+        });
+
+        loginButton.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if (keyEvent.getCode() == KeyCode.ENTER){
+                    System.out.println("ide to");
+                    validateLogin();
+                }
+            }
+        });
+    }
 
 
     public void loginButtonOnAction(ActionEvent event){
@@ -58,6 +98,9 @@ public class LoginController implements Initializable {
             else loginMessageLabel.setText("Columns can not be EMPTY");
 
     }
+
+
+
 
     public void cancelButtonOnAction (ActionEvent event){
         Stage stage = (Stage) cancelButton.getScene().getWindow();
