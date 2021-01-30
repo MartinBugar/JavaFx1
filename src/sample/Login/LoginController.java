@@ -1,4 +1,4 @@
-package sample;
+package sample.Login;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,13 +10,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import sample.Database.DatabaseConnection;
 
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.Struct;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -65,22 +65,25 @@ public class LoginController implements Initializable {
     }
 
     public void validateLogin(){
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDb = connectNow.getConnection();
+
+        DatabaseConnection connectNow = new DatabaseConnection();  //vytvorena instancia triedy databaseConection
+        Connection connectDb = connectNow.getConnection(); // nad instanciou si zavolam metodu na pripojenie
 
         String verifyLogin = "SELECT count(1) FROM user_account Where username = '" + usernameTextField.getText() + "'AND password = '" + enterPasswordTextField.getText() + "'";
 
+        //kontrola prihlasovacich udajov
         try {
-            Statement statement = connectDb.createStatement();
+            Statement statement = connectDb.createStatement(); // , pouziva sa na vykonavanie SQL prikazov, pouziva sa len s resultsetom
             ResultSet queryResult = statement.executeQuery(verifyLogin);
 
             while (queryResult.next()){
-                if (queryResult.getInt(1) ==1){
+                if (queryResult.getInt(1) == 1){//vracia 1 ked sa to podarilo a vracia 2 ked sa to nepodarilo
                     loginMessageLabel.setText("Account verified");
                 } else {
                     loginMessageLabel.setText("Invalid login");
                 }
             }
+
         } catch (Exception ex){
             ex.printStackTrace();
             ex.getCause();

@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="378.0" maxWidth="600.0" minHeight="378.0" minWidth="600.0" prefHeight="378.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
+<BorderPane maxHeight="378.0" maxWidth="600.0" minHeight="378.0" minWidth="600.0" prefHeight="378.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Login.LoginController">
    <left>
       <AnchorPane prefHeight="400.0" prefWidth="228.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="brandingImageView" fitHeight="407.0" fitWidth="228.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../IMAGES/image1.png" />
+                  <Image url="@../../../IMAGES/image1.png" />
                </image></ImageView>
          </children>
       </AnchorPane>
@@ -27,7 +27,7 @@
          <children>
             <ImageView fx:id="lockImageView" fitHeight="61.0" fitWidth="61.0" layoutX="160.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../IMAGES/lock.png" />
+                  <Image url="@../../../IMAGES/lock.png" />
                </image>
             </ImageView>
             <Label layoutX="62.0" layoutY="132.0" text="Username" textFill="WHITE">

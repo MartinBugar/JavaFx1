@@ -1,4 +1,4 @@
-package sample;
+package sample.Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,6 @@ public class DatabaseConnection {
             ex.printStackTrace();
             ex.getCause();
         }
-
         return databaseLink;
 
     }
