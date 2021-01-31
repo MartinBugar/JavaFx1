@@ -23,7 +23,6 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         BorderPane root = FXMLLoader.load(getClass().getResource("Login/login.fxml"));
 
-
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
