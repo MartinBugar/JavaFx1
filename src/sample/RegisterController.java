@@ -34,6 +34,46 @@ public class RegisterController implements Initializable {
     @FXML
     private Button closeButton;
 
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    private Label registrationMessageLabel;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private PasswordField confirmPasswordField;
+
+    @FXML
+    private Label passwordMatchLabel;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        File logoFile = new File("IMAGES/LOGO.png");
+        Image logoImage = new Image(logoFile.toURI().toString());
+        logoImageView.setImage(logoImage);
+    }
+
+    public void registerButtonOnClick (ActionEvent event){
+        registrationMessageLabel.setText("User has been registered.");
+        registerUser();
+    }
+
+    public void registerUser (){
+        if (passwordField.getText().equals(confirmPasswordField.getText())){
+            System.out.println("hesla sa rovnaju");
+            passwordMatchLabel.setText("Passwords matching");
+            passwordMatchLabel.setStyle("-fx-text-fill: #00f20d");
+
+        } else {
+            System.out.println("hesla sa nerovnaju");
+            passwordMatchLabel.setText("Passwords does not match");
+            passwordMatchLabel.setStyle("-fx-text-fill:  #e6d100");
+        }
+    }
+
     public void closeButtonOnAction (ActionEvent actionEvent){
 
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -68,13 +108,6 @@ public class RegisterController implements Initializable {
             ex.printStackTrace();
             ex.getCause();
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        File logoFile = new File("IMAGES/LOGO.png");
-        Image logoImage = new Image(logoFile.toURI().toString());
-        logoImageView.setImage(logoImage);
     }
 
 }
