@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -21,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(final Stage primaryStage) throws Exception{
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        BorderPane root = FXMLLoader.load(getClass().getResource("Login/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override

@@ -1,8 +1,11 @@
-package sample.Login;
+package sample;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,8 +14,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.stage.StageStyle;
 import sample.Database.DatabaseConnection;
 
 import java.io.File;
@@ -23,6 +28,9 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     private Button cancelButton;
@@ -126,6 +134,42 @@ public class LoginController implements Initializable {
                     loginMessageLabel.setText("Invalid login");
                 }
             }
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+            ex.getCause();
+        }
+    }
+
+    public void createAccountForm(){
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+            Stage registerStage = new Stage();
+            registerStage.initStyle(StageStyle.UNDECORATED);
+
+            root.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+            });
+
+            root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    registerStage.setX(event.getScreenX() - xOffset);
+                    registerStage.setY(event.getScreenY() - yOffset);
+                }
+            });
+
+            registerStage.setScene(new Scene(root, 600,623));
+            registerStage.show();
+
+            Stage stage = (Stage) cancelButton.getScene().getWindow();
+            stage.close();
+
 
         } catch (Exception ex){
             ex.printStackTrace();
